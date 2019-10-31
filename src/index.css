@@ -1,0 +1,15 @@
+body {
+    width: 640;
+    height: 640;
+    overflow: hidden;
+    opacity: 1.0;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#c {
+    width: 100vh;
+    height: 100vh;
+}

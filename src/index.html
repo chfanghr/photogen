@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+    <script>
+        let width = 640;
+        let height = 640;
+
+        let xFactor = 255 / width;
+        let yFactor = 255 / height;
+
+        let canvas = document.getElementById("c");
+        let context = canvas.getContext("2d");
+
+        function rValueOnPosition(pos) {
+            return pos.x * xFactor * 2
+        }
+
+        function gValueOnPosition(pos) {
+            return pos.y * yFactor * 2.5;
+        }
+
+        function bValueOnPosition(pos) {
+            return Math.abs(pos.x + pos.y - height) * xFactor / 1.7
+        }
+
+
+        function update() {
+            for (x = 0; x < width; x++) {
+                for (y = 0; y < height; y++) {
+                    var pos = {
+                        x: x,
+                        y: y
+                    };
+                    context.fillStyle = "rgb(" +
+                        rValueOnPosition(pos).toString() + "," +
+                        gValueOnPosition(pos).toString() + "," +
+                        bValueOnPosition(pos).toString() + ")";
+                    context.fillRect(x, y, 1, 1);
+                }
+            }
+        }
+
+        update();
+
+        canvas.onmousedown = self.close;
+    </script>
+</body>
+
+</html>
